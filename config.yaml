@@ -1,0 +1,45 @@
+# config.yaml — MLOps Deploy Kit
+# ─────────────────────────────────────────────────────────────────────────
+# This is the only file you edit. Every script reads values from here.
+# No hardcoded values exist inside the scripts themselves.
+# ─────────────────────────────────────────────────────────────────────────
+
+# ── Domain ────────────────────────────────────────────────────────────── #
+# The public domain name that Nginx will serve and SSL will be issued for.
+domain: api.yourdomain.com
+
+# ── Docker ────────────────────────────────────────────────────────────── #
+# Name of the Docker image to build (used in `docker build -t`).
+docker_image: digit-api
+
+# Name of the running container (used in `docker run --name`).
+docker_container: digit-api
+
+# Internal port the FastAPI/Uvicorn process listens on inside the container.
+port: 8000
+
+# Docker restart policy. Options: no | always | on-failure | unless-stopped
+restart_policy: unless-stopped
+
+# ── Paths ─────────────────────────────────────────────────────────────── #
+# Directory on the host where the application source lives (Dockerfile location).
+app_dir: /home/ubuntu/digit-api
+
+# Directory on the host where prediction logs will be written.
+log_dir: /var/log/digit-api
+
+# ── Nginx ─────────────────────────────────────────────────────────────── #
+# Filename used for sites-available / sites-enabled (no extension).
+nginx_config_name: digit-api
+
+# ── SSL ───────────────────────────────────────────────────────────────── #
+# SSL termination mode.
+#   cloudflare — Expects existing certificates at the paths Cloudflare Origin
+#                CA places them. Nginx config is written to use those certs.
+#   certbot    — Runs `certbot --nginx` to issue and install a Let's Encrypt
+#                certificate automatically. Requires certbot_email below.
+ssl_mode: cloudflare
+
+# Email address passed to Certbot when ssl_mode is "certbot".
+# Ignored when ssl_mode is "cloudflare".
+certbot_email: your@email.com
