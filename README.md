@@ -2,7 +2,7 @@
 
 ![01](01.jpg)
 
-[Proof of Project](Proof.md)
+[Proof of Project](proof.md)
 
 > **Turn the entire deployment pipeline into a single command.**
 
