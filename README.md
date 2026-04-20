@@ -1,6 +1,6 @@
 # MLOps Deploy Kit
 
-![01](01.jpg)
+![01](proof/01.jpg)
 
 [Proof of Project](proof.md)
 
